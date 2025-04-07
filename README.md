@@ -40,7 +40,7 @@ Built with scalability, security, and usability in mind, the project showcases s
 - Configured multiple **Nginx** instances listening on different ports.
 - Each instance reverse proxies requests to the Node.js backend.
 - SSL and Gzip enabled for better performance and security.
-- Config-file example:
+- Config-file example: "/etc/nginx/sites-available/default"
   ```
   server {
         listen 80 default_server;
@@ -71,7 +71,7 @@ Built with scalability, security, and usability in mind, the project showcases s
 ### 5. HAProxy Load Balancing
 - **HAProxy** listens on port 80 and forwards traffic to Nginx instances.
 - Health checks ensure traffic goes only to available backends.
-- Config file example:
+- Config file example: "/etc/haproxy/haproxy.cfg"
   - Frontend
     ```
     frontend http_front
@@ -90,4 +90,38 @@ Built with scalability, security, and usability in mind, the project showcases s
     ```
 
 
+### 6. GitHub Contributions Widget Integration
+
+To visually showcase recent GitHub activity on the portfolio site, a **GitHub Contribution Calendar Widget** was integrated using a CDN for optimal performance and reliability.
+
+#### Integration Steps:
+- CDN Script Import
+  The widget is loaded via jsDelivr CDN, which ensures fast and globally distributed access to the script:
+```
+<script type="module" defer src="https://cdn.jsdelivr.net/gh/imananoosheh/github-contributions-fetch@latest/github_calendar_widget.js"></script>
+Container Setup
+```
+
+- A <div> container is added to the webpage to hold the calendar. The container's id is set to "calendar-component", and the GitHub username is passed as an attribute:
+```
+<div id="calendar-component" username="<your-github-username>"></div>
+```
+
+##### Customization (Optional)
+You can customize the appearance of the calendar by adding optional attributes to the <div> element. For example, to set the theme color of the calendar:
+```
+<div id="calendar-component" username="<your-github-username>" theme-color="#4285f4"></div>
+```
+
+##### Available customization options include:
+
+- theme-color: Sets the main color of the calendar.
+
+- background-color: Sets the background color of the calendar.
+
+
+#### CDN Benefits for Performance
+By utilizing the CDN (jsDelivr), the GitHub Contributions Widget is served from multiple edge locations across the globe, significantly improving load times and reducing latency. With the widget cached at these locations, the response time for users accessing the portfolio website is faster, as they fetch the widget script from the nearest server.
+
+The CDN also ensures high availability, as the widget script is distributed across multiple servers, allowing for fault tolerance and uninterrupted access even during high traffic periods.
 
